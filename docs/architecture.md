@@ -10,7 +10,9 @@ See the blueprint. Key points:
 | Component | Status |
 |---|---|
 | API skeleton + health endpoint | REAL |
-| Dev database (PostGIS via Docker) | REAL (config only, not yet used by code) |
-| Database schema | PLANNED (Phase 2) |
-| Roles and scopes | DESIGNED (docs/roles-and-scopes.md) |
-| Reports, map, AI, analytics | PLANNED / FUTURE |
+| Database schema, migrations, seeds (areas, categories, workflow, users, roles, reports, incidents) | REAL, tested (Phase 2) |
+| Scoped role check in SQL (`user_has_role_in_area`) | REAL, tested |
+| Enforcing roles in the API, authentication | PLANNED (Phase 3) |
+| Real area boundaries | PLANNED (needs data import) |
+| Report submission, map, image upload | PLANNED (Phases 3-5) |
+| AI processing, analytics, prediction | PLANNED / FUTURE |

@@ -4,13 +4,17 @@
   "version": "0.1.0",
   "description": "CIVIQ - City Intelligence Quotient. Civic intelligence platform (first deployment: Ibadan, Oyo State, Nigeria).",
   "packageManager": "pnpm@9.15.0",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "dev": "pnpm --filter @civiq/api dev",
     "build": "pnpm -r build",
     "typecheck": "pnpm -r typecheck",
     "test": "pnpm -r test",
     "db:up": "docker compose -f infra/docker-compose.yml up -d",
-    "db:down": "docker compose -f infra/docker-compose.yml down"
+    "db:down": "docker compose -f infra/docker-compose.yml down",
+    "db:migrate": "pnpm --filter @civiq/database migrate",
+    "db:seed": "pnpm --filter @civiq/database seed"
   }
 }

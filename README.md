@@ -3,7 +3,7 @@
 Civic intelligence platform. First deployment: Ibadan, Oyo State, Nigeria.
 Designed to expand to other states, countries and continents without schema changes.
 
-> Status: Phase 1 (foundation). Only the API skeleton exists. Nothing else is implemented yet.
+> Status: Phase 2 (database). The API skeleton and the database schema exist and are tested. Reporting, maps and AI are not built yet.
 
 ## Quick start (local or GitHub Codespaces)
 
@@ -16,17 +16,22 @@ pnpm dev         # starts API on http://localhost:4000
 curl http://localhost:4000/v1/health
 ```
 
-Database (needs Docker; Codespaces provides it via the devcontainer):
+Database (Codespaces provides it via the devcontainer; locally use Docker with `pnpm db:up`):
 
 ```bash
-pnpm db:up
+export DATABASE_URL=postgres://civiq:civiq_dev_password@localhost:5432/civiq   # in Codespaces use host "db" instead of "localhost"
+pnpm db:migrate
+pnpm db:seed
+pnpm test        # database tests run when DATABASE_URL is set
 ```
+
+See `docs/database.md`.
 
 ## Layout
 - `apps/api` - REST API (Fastify + TypeScript)
 - `packages/shared` - shared types/schemas (provenance, verification states, roles)
 - `packages/ai`, `packages/geo` - provider interfaces (empty until needed)
-- `database/` - migrations and seeds (Phase 2)
+- `database/` - SQL migrations, seeds, migration runner, schema tests
 - `docs/` - architecture, ADRs, roles and scopes
 - `infra/` - local docker compose
 

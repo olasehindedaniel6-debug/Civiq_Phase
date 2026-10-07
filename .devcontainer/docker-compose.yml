@@ -3,10 +3,11 @@ services:
   app:
     image: mcr.microsoft.com/devcontainers/typescript-node:22
     volumes:
-      - ..:/workspaces/civiq:cached
+      - ../..:/workspaces:cached
     command: sleep infinity
     environment:
       DATABASE_URL: postgres://civiq:civiq_dev_password@db:5432/civiq
+      COREPACK_ENABLE_DOWNLOAD_PROMPT: "0"
   db:
     image: postgis/postgis:16-3.4
     restart: unless-stopped
