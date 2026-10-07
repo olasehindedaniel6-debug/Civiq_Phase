@@ -1,0 +1,20 @@
+# Used by GitHub Codespaces / VS Code Dev Containers.
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/typescript-node:22
+    volumes:
+      - ..:/workspaces/civiq:cached
+    command: sleep infinity
+    environment:
+      DATABASE_URL: postgres://civiq:civiq_dev_password@db:5432/civiq
+  db:
+    image: postgis/postgis:16-3.4
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: civiq
+      POSTGRES_PASSWORD: civiq_dev_password
+      POSTGRES_DB: civiq
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:

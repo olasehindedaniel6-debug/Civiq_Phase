@@ -1,0 +1,14 @@
+# Local PostgreSQL + PostGIS for development only.
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    environment:
+      POSTGRES_USER: civiq
+      POSTGRES_PASSWORD: civiq_dev_password
+      POSTGRES_DB: civiq
+    ports:
+      - "5432:5432"
+    volumes:
+      - civiq_pgdata:/var/lib/postgresql/data
+volumes:
+  civiq_pgdata:
